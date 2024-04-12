@@ -1,6 +1,8 @@
+from re import sub, DOTALL
+
 def sanitise(input_string: str) -> str:
-    input_string = re.sub(r"<script.*?>.*?</script>", "", input_string, flags=re.DOTALL)
-    input_string = re.sub(r"<[^>]+>", "", input_string)
+    input_string = sub(r"<script.*?>.*?</script>", "", input_string, flags=DOTALL)
+    input_string = sub(r"<[^>]+>", "", input_string)
     input_string = (
         input_string.replace("&", "&amp")
         .replace("<", "&lt")
